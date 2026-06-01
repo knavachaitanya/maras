@@ -1,0 +1,29 @@
+{
+  "name": "maras-root",
+  "version": "1.0.0",
+  "description": "MultiAgent Research and Aggregation System",
+  "scripts": {
+    "install:all": "npm install && cd frontend && npm install",
+    "setup": "bash scripts/setup.sh",
+    "dev": "concurrently --names \"BACKEND,FRONTEND\" --prefix-colors \"cyan,magenta\" \"cd backend && python -m uvicorn main:app --reload --reload-dir . --port 8000\" \"cd frontend && npm run dev\"",
+    "build": "cd frontend && npm run build",
+    "start": "concurrently --names \"BACKEND,FRONTEND\" \"cd backend && python -m uvicorn main:app --port 8000\" \"cd frontend && npm start\"",
+    "graph": "echo Graph generation requires graphify-codebase package. Install with: npm install -g graphify-codebase",
+    "health": "python scripts/health_check.py"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "ai",
+    "multi-agent",
+    "research",
+    "openswarm"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/mcp-server-supabase": "^0.8.1",
+    "axios": "^1.16.1"
+  }
+}
